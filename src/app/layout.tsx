@@ -13,11 +13,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mylar Pro | Pré-lançamento — Plataforma de Gestão Imobiliária",
-  description: "Cadastre-se e seja avisado no lançamento. CRM, assinatura eletrônica, boleto e PIX integrados para imobiliárias e incorporadoras.",
+  title: "Mylar Pro | Gestão Imobiliária Completa — Lista de Espera",
+  description:
+    "CRM, assinatura eletrônica, boleto e PIX, portal de imóveis e portal do cliente em uma única plataforma. Cadastre-se na lista de espera e garanta condições exclusivas de lançamento.",
+  keywords: [
+    "gestão imobiliária",
+    "CRM imobiliário",
+    "assinatura eletrônica",
+    "boleto PIX imobiliária",
+    "software imobiliário",
+    "plataforma imobiliária",
+    "portal de imóveis",
+    "sistema para imobiliária",
+    "gestão de aluguéis",
+    "incorporadora",
+  ],
   openGraph: {
-    title: "Mylar Pro | Pré-lançamento",
-    description: "Seja o primeiro a conhecer a plataforma completa de gestão imobiliária.",
+    title: "Mylar Pro | Pare de gerenciar imóveis com planilhas",
+    description:
+      "CRM, assinatura eletrônica, cobranças e portal de imóveis — tudo integrado. Entre na lista de espera.",
+    type: "website",
+    locale: "pt_BR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mylar Pro | Gestão Imobiliária Completa",
+    description:
+      "CRM, assinatura eletrônica, cobranças e portal de imóveis — tudo integrado.",
   },
 };
 
