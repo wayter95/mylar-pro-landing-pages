@@ -52,6 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const GTM_ID = "GTM-KCZMXGCX";
+  const GA_ID = "G-ETQ2PJFGJH";
 
   return (
     <html lang="pt-BR">
@@ -77,6 +78,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
+        {/* Google tag (gtag.js) */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-config" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+        {/* End Google tag (gtag.js) */}
         {/* Meta Pixel Code */}
         {META_PIXEL_ID && (
           <>
