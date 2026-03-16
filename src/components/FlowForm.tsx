@@ -54,7 +54,7 @@ export function FlowForm({ variant = "hero" }: { variant?: "hero" | "cta" }) {
           Cadastro realizado!
         </p>
         <p className="mt-1 text-sm text-zinc-400">
-          Seu cupom de desconto exclusivo será enviado por e-mail.
+          Seu bônus exclusivo de lançamento será enviado por e-mail.
         </p>
       </div>
     );
@@ -142,7 +142,7 @@ export function FlowForm({ variant = "hero" }: { variant?: "hero" | "cta" }) {
             Enviando...
           </>
         ) : (
-          "Quero meu cupom de desconto"
+          "Quero meu bônus de lançamento"
         )}
       </button>
       {error && <p className="text-sm text-red-400">{error}</p>}

@@ -33,7 +33,7 @@ export function Hero() {
         >
           <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 shadow-xl shadow-black/50">
             <p className="text-sm font-medium text-zinc-300 mb-4">
-              Cadastre-se e receba um cupom de desconto exclusivo de lançamento
+              Cadastre-se e receba um bônus exclusivo no lançamento da aplicação
             </p>
             <FlowForm variant="hero" />
           </div>

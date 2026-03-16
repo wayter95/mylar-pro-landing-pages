@@ -1,7 +1,7 @@
 "use client";
 
 import { useScrollAnimate } from "@/hooks/useScrollAnimate";
-import { Zap, Percent, Headphones, MessageSquareHeart } from "lucide-react";
+import { Zap, Gift, Headphones, MessageSquareHeart } from "lucide-react";
 
 const benefits = [
   {
@@ -10,9 +10,9 @@ const benefits = [
     description: "Use a plataforma antes do lançamento público.",
   },
   {
-    icon: Percent,
-    title: "Cupom de desconto",
-    description: "Receba um cupom exclusivo de lançamento direto no seu e-mail.",
+    icon: Gift,
+    title: "Bônus de lançamento",
+    description: "Receba um bônus exclusivo de lançamento direto no seu e-mail.",
   },
   {
     icon: Headphones,
@@ -43,10 +43,10 @@ export function EarlyAdopter() {
             Early Adopter
           </span>
           <h2 className="text-2xl font-bold md:text-4xl mb-4">
-            Entre na lista e garanta seu cupom de desconto
+            Entre na lista e garanta seu bônus de lançamento
           </h2>
           <p className="text-zinc-400 max-w-2xl mx-auto">
-            Quem se cadastrar na lista de espera recebe um cupom exclusivo de
+            Quem se cadastrar na lista de espera recebe um bônus exclusivo de
             lançamento — válido apenas para os primeiros inscritos.
           </p>
         </div>
