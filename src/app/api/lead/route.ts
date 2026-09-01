@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendLeadEvent } from "@/lib/meta-conversion-api";
-
-const FLOW_URL = process.env.FLOW_LEAD_FORM_SUBMIT_URL;
+import { getFormUrl, toCognizyPayload } from "@/lib/cognizy";
 
 type SubmissionBody = {
   Nome?: string;
@@ -19,6 +18,7 @@ type SubmissionBody = {
 
 const REQUIRED_FIELDS: Array<keyof SubmissionBody> = [
   "Nome",
+  "Email",
   "Telefone",
   "Atuacao",
 ];
@@ -49,8 +49,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const email = body.Email?.trim();
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    const email = body.Email!.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
         { error: "Informe um email válido." },
         { status: 400 },
@@ -113,31 +113,32 @@ export async function POST(request: NextRequest) {
       attribution: body.attribution,
     };
 
-    let deliveredToFlow = false;
+    const formUrl = getFormUrl(body.Origem);
+    let delivered = false;
 
-    if (FLOW_URL) {
+    if (formUrl) {
       try {
-        const res = await fetch(FLOW_URL, {
+        const res = await fetch(formUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
+          body: JSON.stringify(toCognizyPayload(lead)),
           signal: AbortSignal.timeout(10000),
         });
 
         if (res.ok) {
-          deliveredToFlow = true;
+          delivered = true;
         } else {
           const text = await res.text();
-          console.error("[Lead proxy] Flow recusou:", res.status, text);
+          console.error("[Lead proxy] Cognizy recusou:", res.status, text);
         }
       } catch (err) {
-        console.error("[Lead proxy] Flow inacessível:", err);
+        console.error("[Lead proxy] Cognizy inacessível:", err);
       }
     }
 
-    if (!deliveredToFlow) {
+    if (!delivered) {
       console.error(
-        "[Lead proxy] LEAD NÃO ENTREGUE AO FLOW — registrado no log para recuperação manual:",
+        "[Lead proxy] LEAD NÃO ENTREGUE — registrado no log para recuperação manual:",
         JSON.stringify(lead),
       );
     }
@@ -147,7 +148,7 @@ export async function POST(request: NextRequest) {
 
     if (pixelId && accessToken) {
       const result = await sendLeadEvent(pixelId, accessToken, {
-        email: email ?? "",
+        email,
         phone: body.Telefone,
         eventSourceUrl: getEventSourceUrl(request),
         eventId: `lead-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`,

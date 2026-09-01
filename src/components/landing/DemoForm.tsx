@@ -230,6 +230,22 @@ export function DemoForm({ variant = "hero" }: { variant?: "hero" | "cta" }) {
         />
       </div>
 
+      <div className="space-y-1.5">
+        <label htmlFor={`rodizio-imob-${variant}`} className={labelClasses}>
+          Nome da imobiliária{" "}
+          <span className="font-normal text-zinc-500">(opcional)</span>
+        </label>
+        <input
+          id={`rodizio-imob-${variant}`}
+          type="text"
+          name="Imobiliaria"
+          disabled={isPending}
+          autoComplete="organization"
+          placeholder="Como o time te conhece"
+          className={inputClasses}
+        />
+      </div>
+
       <fieldset
         className="space-y-2"
         aria-describedby={linesError ? `rodizio-atuacao-erro-${variant}` : undefined}

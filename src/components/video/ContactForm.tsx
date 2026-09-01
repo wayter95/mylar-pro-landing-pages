@@ -171,6 +171,22 @@ export function ContactForm() {
               </div>
 
               <div className="space-y-1.5">
+                <label htmlFor="video-email" className={labelClasses}>
+                  Email
+                </label>
+                <input
+                  id="video-email"
+                  type="email"
+                  name="Email"
+                  required
+                  disabled={isPending}
+                  autoComplete="email"
+                  placeholder="seu@email.com"
+                  className={inputClasses}
+                />
+              </div>
+
+              <div className="space-y-1.5">
                 <label htmlFor="video-atuacao" className={labelClasses}>
                   Você trabalha com
                 </label>
