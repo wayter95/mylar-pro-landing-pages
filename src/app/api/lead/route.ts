@@ -12,12 +12,13 @@ type SubmissionBody = {
   CarteiraLocacao?: string;
   TamanhoTime?: string;
   Imobiliaria?: string;
+  Contexto?: string;
+  Origem?: string;
   attribution?: Record<string, string>;
 };
 
 const REQUIRED_FIELDS: Array<keyof SubmissionBody> = [
   "Nome",
-  "Email",
   "Telefone",
   "Atuacao",
 ];
@@ -48,8 +49,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const email = body.Email!.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    const email = body.Email?.trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
         { error: "Informe um email válido." },
         { status: 400 },
@@ -67,22 +68,31 @@ export async function POST(request: NextRequest) {
     const atuacao = body.Atuacao!.toLowerCase();
     const worksWithSales = atuacao.includes("venda");
     const worksWithRentals = atuacao.includes("aluguel");
+    const worksWithSeasonal = atuacao.includes("temporada");
 
-    if (!worksWithSales && !worksWithRentals) {
+    if (!worksWithSales && !worksWithRentals && !worksWithSeasonal) {
       return NextResponse.json(
-        { error: "Informe se você trabalha com venda, aluguel ou os dois." },
+        { error: "Informe se você trabalha com venda, aluguel ou temporada." },
         { status: 400 },
       );
     }
 
-    if (worksWithSales && !isFilled(body.VolumeVendas)) {
+    if (
+      worksWithSales &&
+      body.VolumeVendas !== undefined &&
+      !isFilled(body.VolumeVendas)
+    ) {
       return NextResponse.json(
         { error: "Informe o volume de vendas por mês." },
         { status: 400 },
       );
     }
 
-    if (worksWithRentals && !isFilled(body.CarteiraLocacao)) {
+    if (
+      worksWithRentals &&
+      body.CarteiraLocacao !== undefined &&
+      !isFilled(body.CarteiraLocacao)
+    ) {
       return NextResponse.json(
         { error: "Informe o tamanho da carteira de locação." },
         { status: 400 },
@@ -93,6 +103,9 @@ export async function POST(request: NextRequest) {
       Nome: body.Nome,
       Email: email,
       Telefone: body.Telefone,
+      Imobiliaria: body.Imobiliaria,
+      Contexto: body.Contexto,
+      Origem: body.Origem,
       Atuacao: body.Atuacao,
       VolumeVendas: body.VolumeVendas,
       CarteiraLocacao: body.CarteiraLocacao,
@@ -134,7 +147,7 @@ export async function POST(request: NextRequest) {
 
     if (pixelId && accessToken) {
       const result = await sendLeadEvent(pixelId, accessToken, {
-        email,
+        email: email ?? "",
         phone: body.Telefone,
         eventSourceUrl: getEventSourceUrl(request),
         eventId: `lead-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`,
