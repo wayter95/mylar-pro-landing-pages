@@ -16,33 +16,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mylar Pro | Gestão Imobiliária Completa — Lista de Espera",
+  title:
+    "Rodízio de leads para imobiliárias | MyLar Pro — demonstração de 20 minutos",
   description:
-    "CRM, assinatura eletrônica, boleto e PIX, portal de imóveis e portal do cliente em uma única plataforma. Cadastre-se na lista de espera e garanta condições exclusivas de lançamento.",
+    "Leads de venda e de locação distribuídos automaticamente por round-robin, com timer de redistribuição e pré-atendimento por IA fora do horário comercial. Agende 20 minutos e veja funcionando na sua operação.",
   keywords: [
-    "gestão imobiliária",
+    "rodízio de leads",
+    "distribuição de leads imobiliária",
+    "round robin leads",
     "CRM imobiliário",
-    "assinatura eletrônica",
-    "boleto PIX imobiliária",
-    "software imobiliário",
-    "plataforma imobiliária",
-    "portal de imóveis",
-    "sistema para imobiliária",
-    "gestão de aluguéis",
-    "incorporadora",
+    "atendimento por IA imobiliária",
+    "software para imobiliária",
+    "CRM para venda de imóveis",
+    "gestão de locação",
+    "app para corretor",
   ],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Mylar Pro | Pare de gerenciar imóveis com planilhas",
+    title: "O lead que caiu às 2h de sábado ficou sem resposta até segunda",
     description:
-      "CRM, assinatura eletrônica, cobranças e portal de imóveis — tudo integrado. Entre na lista de espera.",
+      "Venda ou aluguel: a IA conversa e qualifica fora do horário comercial, e o rodízio acorda o corretor certo, com registro de quem ficou com o lead.",
     type: "website",
     locale: "pt_BR",
+    url: "/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mylar Pro | Gestão Imobiliária Completa",
+    title: "Rodízio de leads para imobiliárias | MyLar Pro",
     description:
-      "CRM, assinatura eletrônica, cobranças e portal de imóveis — tudo integrado.",
+      "Venda e locação: distribuição automática, timer de redistribuição e pré-atendimento por IA. Veja em 20 minutos.",
   },
 };
 

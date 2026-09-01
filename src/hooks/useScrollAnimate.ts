@@ -2,6 +2,26 @@
 
 import { useEffect, useRef } from "react";
 
+const ANIMATED_SELECTOR =
+  ".scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale";
+
+const FAILSAFE_DELAY_MS = 2500;
+
+function canAnimate() {
+  return (
+    typeof window !== "undefined" &&
+    typeof IntersectionObserver !== "undefined" &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
+function revealAll(root: HTMLElement) {
+  root.classList.add("visible");
+  root
+    .querySelectorAll(ANIMATED_SELECTOR)
+    .forEach((child) => child.classList.add("visible"));
+}
+
 export function useScrollAnimate<T extends HTMLElement = HTMLDivElement>() {
   const ref = useRef<T>(null);
 
@@ -9,31 +29,38 @@ export function useScrollAnimate<T extends HTMLElement = HTMLDivElement>() {
     const el = ref.current;
     if (!el) return;
 
+    if (!canAnimate()) {
+      revealAll(el);
+      return;
+    }
+
+    document.documentElement.classList.add("js-animations");
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            // Also animate children with scroll-animate class
-            entry.target
-              .querySelectorAll(
-                ".scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale"
-              )
-              .forEach((child) => child.classList.add("visible"));
-          }
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("visible");
+          entry.target
+            .querySelectorAll(ANIMATED_SELECTOR)
+            .forEach((child) => child.classList.add("visible"));
+          observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
     );
 
     observer.observe(el);
+    el.querySelectorAll(ANIMATED_SELECTOR).forEach((child) =>
+      observer.observe(child),
+    );
 
-    // Also observe children
-    el.querySelectorAll(
-      ".scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale"
-    ).forEach((child) => observer.observe(child));
+    const failsafe = window.setTimeout(() => revealAll(el), FAILSAFE_DELAY_MS);
 
-    return () => observer.disconnect();
+    return () => {
+      window.clearTimeout(failsafe);
+      observer.disconnect();
+    };
   }, []);
 
   return ref;
