@@ -50,22 +50,20 @@ export function VideoPlayer() {
         onTimeUpdate={onTimeUpdate}
         onEnded={onEnded}
         className="h-full w-full"
-      >
-        <track kind="captions" srcLang="pt-BR" label="Português" default />
-      </video>
+      />
 
       {!playing && (
         <button
           type="button"
           onClick={handlePlayClick}
-          aria-label="Assistir ao vídeo de 3 minutos"
+          aria-label="Assistir ao vídeo de 2 minutos"
           className="group absolute inset-0 flex flex-col items-center justify-center gap-4 bg-zinc-950/40 transition-colors hover:bg-zinc-950/25"
         >
           <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white/95 shadow-2xl transition-transform group-hover:scale-105">
             <Play className="ml-1.5 h-8 w-8 fill-zinc-900 text-zinc-900" />
           </span>
           <span className="rounded-full bg-zinc-950/70 px-4 py-1.5 text-sm font-medium text-zinc-200 backdrop-blur-sm">
-            3 minutos · sem cadastro
+            2 minutos · sem cadastro
           </span>
         </button>
       )}

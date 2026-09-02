@@ -9,7 +9,7 @@ export function Hero() {
       <div className="mx-auto mb-10 max-w-3xl text-center animate-fade-in-up">
         <span className="inline-flex items-center gap-2 rounded-full border border-[#3AB8D6]/30 bg-linear-to-r from-[#3AB8D6]/20 to-[#067EFB]/20 px-4 py-1.5 text-sm font-medium text-[#3AB8D6]">
           <PlayCircle className="h-4 w-4" />
-          Vídeo de 3 minutos · sem formulário
+          Vídeo de 2 minutos · sem formulário
         </span>
 
         <h1 className="mt-7 text-4xl font-extrabold leading-[1.08] tracking-tight text-balance sm:text-5xl">

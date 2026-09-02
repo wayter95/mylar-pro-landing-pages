@@ -20,7 +20,7 @@ const QUESTIONS = [
   },
   {
     q: "Já vi promessa de automação que virou mais trabalho para a equipe.",
-    a: "Por isso a oferta desta página é um vídeo, não uma demonstração com apresentador. Você vê o fluxo rodando em tela e julga se aquilo tira trabalho da mesa do seu time ou acrescenta. Se acrescentar, você fecha a aba e não gastou nada além de três minutos.",
+    a: "Por isso a oferta desta página é um vídeo, não uma demonstração com apresentador. Você vê o fluxo rodando em tela e julga se aquilo tira trabalho da mesa do seu time ou acrescenta. Se acrescentar, você fecha a aba e não gastou nada além de dois minutos.",
   },
   {
     q: "Meu time não vai usar. O corretor larga qualquer sistema chato.",
@@ -36,7 +36,7 @@ const QUESTIONS = [
   },
   {
     q: "Migrar a base inteira de contratos e imóveis vai parar a operação.",
-    a: "Migração é conversa de projeto, com a sua base na mesa, e não é o que esta página pede de você. Aqui o compromisso é de três minutos de vídeo. Se depois fizer sentido discutir migração, você fala com alguém que já viu o seu caso, não com um formulário.",
+    a: "Migração é conversa de projeto, com a sua base na mesa, e não é o que esta página pede de você. Aqui o compromisso é de dois minutos de vídeo. Se depois fizer sentido discutir migração, você fala com alguém que já viu o seu caso, não com um formulário.",
   },
   {
     q: "Preciso preencher formulário ou agendar reunião para assistir?",

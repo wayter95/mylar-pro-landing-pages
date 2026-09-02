@@ -4,7 +4,7 @@ import { Check } from "lucide-react";
 import { useScrollAnimate } from "@/hooks/useScrollAnimate";
 
 const ITEMS = [
-  "Vídeo de 2 a 3 minutos com o fluxo completo do lead, gravado na tela do sistema.",
+  "Vídeo de 2 minutos com o fluxo completo do lead, gravado na tela do sistema.",
   "O passo do pré-atendimento fora do horário comercial, com as perguntas que a IA faz.",
   "O rodízio e o timer de redistribuição funcionando, com o corretor que não respondeu.",
   "O histórico de atribuição: quem recebeu, quando, quem respondeu.",
@@ -19,7 +19,7 @@ export function Offer() {
     <section ref={ref} className="mx-auto max-w-4xl px-6 py-20 md:py-24">
       <div className="scroll-animate mx-auto mb-10 max-w-2xl text-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
-          Vídeo de 3 minutos,{" "}
+          Vídeo de 2 minutos,{" "}
           <span className="gradient-text">página aberta</span>
         </h2>
         <p className="mt-5 text-lg leading-relaxed text-zinc-400">

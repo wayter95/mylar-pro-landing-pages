@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "O caminho do lead das 23h40 até o corretor certo | MyLar Pro — vídeo de 3 minutos",
+    "O caminho do lead das 23h40 até o corretor certo | MyLar Pro — vídeo de 2 minutos",
   description:
-    "Vídeo de 3 minutos mostrando o caminho do lead, do portal e do WhatsApp até o corretor certo, com pré-atendimento por IA, rodízio, timer de redistribuição e histórico de atribuição. Sem formulário, sem agendar nada.",
+    "Vídeo de 2 minutos mostrando o caminho do lead, do portal e do WhatsApp até o corretor certo, com pré-atendimento por IA, rodízio, timer de redistribuição e histórico de atribuição. Sem formulário, sem agendar nada.",
   keywords: [
     "distribuição de leads imobiliária",
     "rodízio de leads",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "O lead chegou às 23h40 de sábado. Alguém só viu na segunda.",
     description:
-      "Veja em 3 minutos o caminho do lead até o corretor certo, com a vez de cada um registrada. Sem formulário, sem agendar nada.",
+      "Veja em 2 minutos o caminho do lead até o corretor certo, com a vez de cada um registrada. Sem formulário, sem agendar nada.",
     type: "website",
     locale: "pt_BR",
     url: "/video",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "O caminho do lead das 23h40 até o corretor certo | MyLar Pro",
     description:
-      "Vídeo de 3 minutos, sem formulário e sem agendamento.",
+      "Vídeo de 2 minutos, sem formulário e sem agendamento.",
   },
 };
 
